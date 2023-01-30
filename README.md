@@ -10,7 +10,6 @@ files included
 # Bank
 I wanted to do something different and created a bank to manage clients.
 The bank uses two vectors to manage both the bank accounts and the people
-/n
 
 Additional Objectives: 
 
