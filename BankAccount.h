@@ -71,5 +71,16 @@ class BankAccount
             balance -= amount;
             std::cout << "Withdrew " << amount << std::endl;
         }
+        
+        string getBankAccountNumber()
+        {
+            return bankAccountNumber;
+        }
+
+        int getBalance()
+        {
+            return balance;
+        }
+
 
 };

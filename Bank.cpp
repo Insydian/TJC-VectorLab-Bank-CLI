@@ -4,32 +4,43 @@
 #include "Person.h"
 using namespace std;
 
-int AddBankAccount(MyVector<BankAccount> bankAccounts);
-int AddPerson(MyVector<Person> people);
-int AddClient(MyVector<BankAccount> bankAccounts, MyVector<Person> people);
+int addBankAccount(BankAccount account1);
+int addPerson(MyVector<Person> people);
+int addClient(MyVector<BankAccount> bankAccounts, MyVector<Person> people);
 /// Code By Caleb LaRue
 /// Bank is designed as the interface between BankAccounts and people
+MyVector<BankAccount> bankAccounts;
+MyVector<Person> clients;
 int main (int argc, char *argv[])
 {
-    MyVector<BankAccount> bankAccounts;
-    MyVector<Person> clients;
-    return 0;
-}
-int AddBankAccount(MyVector<BankAccount> bankAccounts, BankAccount account1)
-{
-    int capacity = bankAccounts.getCapacity();
-    int size = bankAccounts.getSize();
-
+    BankAccount b1;
+    addBankAccount(b1);
+    cout << "back in main" << endl;
+    cout << " testing AccountNumber" << bankAccounts.getElementAt(0).getBankAccountNumber() << endl;
+    for(int i = 0; i < bankAccounts.getSize(); ++i)
+    {
+        cout << bankAccounts.getElementAt(i).getBankAccountNumber() << endl;
+    }
     
     return 0;
 }
+int addBankAccount(BankAccount account1)
+{
+    const BankAccount constAccount = account1;
+    int capacity = bankAccounts.getCapacity();
+    int size = bankAccounts.getSize();
+    
+    bankAccounts.pushBack(constAccount);
+    cout << "It worked" <<endl; 
+    return 0;
+}
 
-int AddPerson(MyVector<Person> people)
+int addPerson(MyVector<Person> people)
 {
     return 0;
 }
 
-int AddClient(MyVector<BankAccount> bankAccounts, MyVector<Person> people)
+int addClient(MyVector<BankAccount> bankAccounts, MyVector<Person> people)
 {
     return 0;
 }
