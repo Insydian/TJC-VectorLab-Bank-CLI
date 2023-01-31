@@ -14,6 +14,7 @@ int addClient(string name, int age, int creditScore);
 string convertToString(char* a);
 void option1();
 void option2();
+void option2TextInterface(int position);
 int findPosition(string firstName);
 // Code By Caleb LaRue
 // Bank is designed as the interface between BankAccounts and people
@@ -128,9 +129,44 @@ void option2()
         cout << "We are sorry we did not find that name"<< endl;
         return;
     }
+
+}
+void option2TextInterface(int position)
+{
+
+    int option;
     cout << "Please select an option" << endl;
     cout << "[1] Withdraw from account" << endl;
     cout << "[2] Deposit from account" << endl;
+    cout << "[3] Get Bank Account Number" << endl;
+    cout << "[4] Get Balance of the account" << endl;
+    cout << "[5] Exit" << endl;
+    cin >> option;
+    if(option == 1)
+    {
+        double WithdrawnAmount = 0;
+        cout << "How much money would you like to withdraw from the account?" << endl;
+        cin >> WithdrawnAmount;
+        bankAccounts.getElementAt(position).withdraw(WithdrawnAmount);
+        cout << "you Withdrew " << WithdrawnAmount << ". You have " << bankAccounts.getElementAt(position).getBalance() << " left in your account" << endl;     
+        option2TextInterface(position);
+    }
+    else if(option == 2)
+    {
+        double depositAmmount = 0;
+        cout << "How much money would you like to deposit into the account" << endl;
+        cin >> depositAmmount;
+        bankAccounts.getElementAt(position).deposit(depositAmmount);
+        cout << "You deposited " << depositAmmount << " into your account. You have " << bankAccounts.getElementAt(position).getBalance() << " in you account." << endl; 
+    }
+    else if(option == 3)
+    {
+        cout << "Your bank account number for: " << clients.getElementAt(position).getName() << " is " << bankAccounts.getElementAt(position).getBankAccountNumber() << endl;
+    }
+    else if(option == 4)
+    {
+        cout << "Your balance for: " << clients.getElementAt(position).getName() << " is " << bankAccounts.getElementAt(position).getBalance() << endl;
+    }
 }
 int findPosition(string firstName)
 {
