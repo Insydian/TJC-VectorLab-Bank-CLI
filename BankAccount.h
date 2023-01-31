@@ -56,7 +56,8 @@ class BankAccount
     /// output: none
         void deposit(double amount)
         {
-            balance += amount;
+            double newBalance = balance + amount;
+            balance = newBalance;
             cout << "Deposited" << amount << endl;
         } 
     /// Purpose: Method to subtract from account
@@ -77,7 +78,7 @@ class BankAccount
             return bankAccountNumber;
         }
 
-        int getBalance()
+        double getBalance()
         {
             return balance;
         }

@@ -6,7 +6,6 @@
 #include "Person.h"
 using namespace std;
 
-#define MAX_NAME_LEN 60  // Maximum len of your name can't be more than 60
 
 int addBankAccount(BankAccount account1);
 int addPerson(Person client);
@@ -17,7 +16,7 @@ void option2();
 void option2TextInterface(int position);
 int findPosition(string firstName);
 // Code By Caleb LaRue
-// Bank is designed as the interface between BankAccounts and people
+// Bank is designed as the controller between BankAccounts and people
 MyVector<BankAccount> bankAccounts;
 MyVector<Person> clients;
 int main ()
@@ -37,8 +36,9 @@ int main ()
     }
     else if(option == 2)
     {
-        cout << "Option 2" << endl;
         option2();
+        cout << "Thank you for banking with TJC Bank";
+        main();
     }
     return 0;
 }
@@ -129,6 +129,7 @@ void option2()
         cout << "We are sorry we did not find that name"<< endl;
         return;
     }
+    option2TextInterface(position);
 
 }
 void option2TextInterface(int position)
@@ -157,15 +158,21 @@ void option2TextInterface(int position)
         cout << "How much money would you like to deposit into the account" << endl;
         cin >> depositAmmount;
         bankAccounts.getElementAt(position).deposit(depositAmmount);
-        cout << "You deposited " << depositAmmount << " into your account. You have " << bankAccounts.getElementAt(position).getBalance() << " in you account." << endl; 
+        cout << "You deposited " << depositAmmount << " into your account. You have " << bankAccounts.getElementAt(position).getBalance() << " in your account." << endl; 
+        option2TextInterface(position);
     }
     else if(option == 3)
     {
         cout << "Your bank account number for: " << clients.getElementAt(position).getName() << " is " << bankAccounts.getElementAt(position).getBankAccountNumber() << endl;
+        option2TextInterface(position);
     }
     else if(option == 4)
     {
         cout << "Your balance for: " << clients.getElementAt(position).getName() << " is " << bankAccounts.getElementAt(position).getBalance() << endl;
+        option2TextInterface(position);
+    }
+    else {
+        return;
     }
 }
 int findPosition(string firstName)
