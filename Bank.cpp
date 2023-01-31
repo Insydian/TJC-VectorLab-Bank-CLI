@@ -15,8 +15,12 @@ int main (int argc, char *argv[])
     MyVector<Person> clients;
     return 0;
 }
-int AddBankAccount(MyVector<BankAccount> bankAccounts)
+int AddBankAccount(MyVector<BankAccount> bankAccounts, BankAccount account1)
 {
+    int capacity = bankAccounts.getCapacity();
+    int size = bankAccounts.getSize();
+
+    
     return 0;
 }
 
