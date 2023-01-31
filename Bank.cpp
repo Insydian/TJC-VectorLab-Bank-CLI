@@ -2,6 +2,7 @@
 #include <string>
 #include "BankAccount.h"
 #include "MyVector.h"
+#include <cctype>
 #include "Person.h"
 using namespace std;
 
@@ -12,25 +13,32 @@ int addPerson(Person client);
 int addClient(string name, int age, int creditScore);
 string convertToString(char* a);
 void option1();
+void option2();
+int findPosition(string firstName);
 // Code By Caleb LaRue
 // Bank is designed as the interface between BankAccounts and people
 MyVector<BankAccount> bankAccounts;
 MyVector<Person> clients;
-int main (int argc, char *argv[])
+int main ()
 {
     cout << "Welcome to the TJC Bank" << endl;
     cout << "Please choose one of the following:" << endl;
     cout << "[1] New Client" << endl;
     cout << "[2] Bank Operations" << endl;
+    cout << "[3] Exit" << endl;
     int option;
     cin >> option;
     if(option == 1)
     {
         option1();
         std::cout << "Thank you for banking with TJC Bank" << std::endl;
+        main();
     }
     else if(option == 2)
+    {
         cout << "Option 2" << endl;
+        option2();
+    }
     return 0;
 }
 int addBankAccount(BankAccount account1)
@@ -108,8 +116,45 @@ void option1()
         else
          option1();
 }
-string convertToString(char* a)
+void option2()
 {
-    string s(a);
-    return s;
+    int position;
+    string firstName;
+    cout << "Please enter you first name" << endl;
+    cin >> firstName;
+    position = findPosition(firstName);
+    if(position < 0)
+    {
+        cout << "We are sorry we did not find that name"<< endl;
+        return;
+    }
+    cout << "Please select an option" << endl;
+    cout << "[1] Withdraw from account" << endl;
+    cout << "[2] Deposit from account" << endl;
+}
+int findPosition(string firstName)
+{
+    int nameLength = 0;
+    MyVector<char> arrayOfName;
+    for(int i = 0; i < firstName.size(); ++i)
+    {
+        arrayOfName.pushBack(firstName[i]);
+    }
+
+    for(int i = 0; i < clients.getSize(); i++)
+    {
+        for(int j = 0; j < arrayOfName.getSize(); j++)
+        {
+            if(toupper(arrayOfName.getElementAt(j)) == toupper(clients.getElementAt(i).getName()[j]))
+            {
+                nameLength++;
+            }
+            if(nameLength == arrayOfName.getSize())
+            {
+                return i;
+            }
+
+        }
+    }
+    return -1;
 }
