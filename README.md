@@ -13,7 +13,8 @@ The bank uses two vectors to manage both the bank accounts and the people
 
 Additional Objectives: 
 
+- Build a CLI in C++
+- Work with IO Streams
 - Learn about header files and create several
 - Keep getting practice in NeoVim
 - Integrate Header files into a main .cpp file to compile
-
