@@ -22,10 +22,11 @@ MyVector<Person> clients;
 int main ()
 {
     int a;
-    while(true)
+   /* while(true)
     {
         a++;
-    }
+    }*///or you can just delete it
+    
     cout << "Welcome to the TJC Bank" << endl;
     cout << "Please choose one of the following:" << endl;
     cout << "[1] New Client" << endl;
