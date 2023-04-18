@@ -21,6 +21,11 @@ MyVector<BankAccount> bankAccounts;
 MyVector<Person> clients;
 int main ()
 {
+    int a;
+    while(true)
+    {
+        a++;
+    }
     cout << "Welcome to the TJC Bank" << endl;
     cout << "Please choose one of the following:" << endl;
     cout << "[1] New Client" << endl;
